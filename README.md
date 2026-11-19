@@ -43,4 +43,16 @@ pytest
 
 ## 状态
 
-阶段 3 第一刀尚未开始（骨架 + 文档 CRUD）。目录结构规划见 `docs/PLAN.md`。
+**第一刀已完成（2026-11-19）**：FastAPI 骨架 + 文档 CRUD + 14 个 pytest 用例。
+
+- `app/main.py` — 入口：CORS、统一错误结构 `{"error":{code,message}}`、`/health`
+- `app/config.py` — 数据库路径与 CORS 来源（环境变量可覆盖）
+- `app/db.py` — SQLite 连接与建表
+- `app/store.py` — `DocumentStore` Protocol + `SqliteDocumentStore` 实现 + 测试用 `InMemoryDocumentStore`（轻量六边形：路由只依赖协议）
+- `app/documents.py` — 五端点 CRUD
+- `app/schemas.py` — 请求/响应模型（payload 不定义内部结构）
+- `tests/test_documents.py` — 14 例：CRUD 往返 / 404 / 422 / 列表无 payload / 重启持久化 / 假存储契约
+
+本地验证：`pytest` 14 passed；uvicorn 实跑 + curl 全链路（创建→列表→详情→更新→重启→删除→404）通过。
+
+下一刀：前端接入（`agentgis-frontend` 持久化适配层，localStorage 降级保留）。第三刀：空间分析（buffer / overlay）。
