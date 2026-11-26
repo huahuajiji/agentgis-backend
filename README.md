@@ -1,6 +1,6 @@
 # AgentGIS 后端
 
-AgentGIS（GIS 地图文档编辑器）的后端服务。为前端仓库 [`agentgis-frontend`](../agentgis-frontend) 提供：
+AgentGIS（GIS 地图文档编辑器）的后端服务。为前端仓库 [`agentgis-frontend`](https://github.com/huahuajiji/agentgis-frontend) 提供：
 
 - **文档持久化**：MapDocument JSON 的 CRUD（替换前端 localStorage）—— **已实现**（第一刀）
 - **空间分析**：buffer / overlay 两个算子，单端点 + operation 分发 —— **规划中**（第三刀，尚未实现）
@@ -65,4 +65,4 @@ pytest
 
 本地验证：`pytest` 14 passed；uvicorn 实跑 + curl 全链路（创建→列表→详情→更新→重启→删除→404）通过。
 
-下一刀：前端接入（`agentgis-frontend` 持久化适配层，localStorage 降级保留）。第三刀：空间分析（buffer / overlay），当前**尚未实现**——`app/` 无 spatial 模块，`requirements.txt` 也未加 Shapely / pyproj。
+前端接入：`agentgis-frontend` 已实现手动同步（拉取 / 上传两个显式动作），后端无需改动。下一刀：空间分析（buffer / overlay），当前**尚未实现**——`app/` 无 spatial 模块，`requirements.txt` 也未加 Shapely / pyproj。
