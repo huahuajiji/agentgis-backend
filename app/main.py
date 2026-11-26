@@ -10,6 +10,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .config import cors_origins
 from .documents import router as documents_router
+from .spatial import router as spatial_router
 
 app = FastAPI(
     title="AgentGIS 后端",
@@ -49,3 +50,4 @@ def health() -> dict[str, str]:
 
 
 app.include_router(documents_router)
+app.include_router(spatial_router)

@@ -9,7 +9,7 @@
 |---|---|---|
 | 第一刀 | FastAPI 骨架 + 文档 CRUD + 14 例 pytest | ✅ 2026-11-19 |
 | 第二刀 | 前端持久化适配层接后端 | 前端仓库进行中（后端无需改动） |
-| 第三刀 | 空间分析 `POST /api/spatial/analysis`（buffer / overlay） | ⬜ 未开始，`app/` 无 spatial 模块，requirements 未含 shapely/pyproj |
+| 第三刀 | 空间分析 `POST /api/spatial/analysis`（buffer / overlay） | ✅ 2026-11-26，`app/spatial.py` + 14 例测试 |
 
 ## 实际结构（第一刀落地后）
 
@@ -45,7 +45,7 @@ agentgis-backend/
 
 错误统一为 `{"error": {"code", "message"}}`。
 
-规划中（第三刀，当前调用会 404）：空间分析 `POST /api/spatial/analysis`（buffer / overlay），4326 进 4326 出、内部转 3857 用 Shapely。
+已实现（第三刀）：空间分析 `POST /api/spatial/analysis`（buffer / overlay），4326 进 4326 出、内部转 3857 用 Shapely；算子写纯函数、分发处注册一行。
 
 ## 与旧后端（`aigc/rag-agent（后端）/vision/v0.7`）的关系
 
