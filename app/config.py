@@ -18,11 +18,15 @@ def database_path() -> Path:
 
 
 def cors_origins() -> list[str]:
-    """允许的前端来源。AGENTGIS_CORS_ORIGINS 逗号分隔；默认本地 Vite 开发端口。"""
+    """允许的前端来源。AGENTGIS_CORS_ORIGINS 逗号分隔；默认本地 Vite 开发端口
+
+    + GitHub Pages 的部署地址（部署见 docs/DEPLOY.md）。
+    """
     configured = os.environ.get("AGENTGIS_CORS_ORIGINS", "")
     if configured.strip():
         return [origin.strip() for origin in configured.split(",") if origin.strip()]
     return [
         "http://127.0.0.1:5173",
         "http://localhost:5173",
+        "https://huahuajiji.github.io",
     ]

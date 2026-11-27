@@ -53,6 +53,11 @@ uvicorn app.main:app --reload --port 8000
 pytest
 ```
 
+## 部署
+
+线上运行在 Hugging Face Spaces（Docker，端口 7860），Space 内容由 `space/sync.ps1`
+从本仓库同步。完整步骤、CORS 与存储说明见 [docs/DEPLOY.md](docs/DEPLOY.md)。
+
 ## 状态
 
 **第一刀已完成（2026-11-19）**：FastAPI 骨架 + 文档 CRUD + 14 个 pytest 用例。
